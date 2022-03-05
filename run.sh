@@ -1,0 +1,1 @@
+sudo docker-compose -f docker-compose.yaml --project-name nccl-test  up --build
