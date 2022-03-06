@@ -1,4 +1,23 @@
-# sh run.sh to get results for 2 GPU
+# Docker image to run NCCL test on 2 GPUs
+
+This project is a docker containing a minimal run NCCL-test across 2 gpus.  The host only needs to install 
+NVIDIA drivers, docker, docker-compose, and nvidia extensions for docker, all other sw is contained in this docker image.
+
+sh run.sh to get results for 2 GPU
+
+This code was created to debug the "ddp across 2x A6000 locks up because IOMMU was enabled" because my system has 
+no CUDA, etc.  Not well crafted and slapped together while debugging this issue. So use at your own risk.
+
+[pytorch issue with logs and final solution](https://github.com/pytorch/pytorch/issues/73790)
+
+[pytorch-lightning issues for this issue](https://github.com/PyTorchLightning/pytorch-lightning/issues/12235)
+
+[Nvidia NCCL troubleshooting](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting.html) NCCL used when ddp 
+is used. Turns out it says instanility and lockups if IOMMU is enabled. It contains a bunch of other troubleshooting information.
+
+
+
+
 # NCCL Tests pulled into docker, since host only has NVIDIA drivers
 
 These tests check both the performance and the correctness of [NCCL](http://github.com/nvidia/nccl) operations.
